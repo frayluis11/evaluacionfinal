@@ -1,0 +1,44 @@
+package com.examen.proyecto.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.examen.proyecto.entity.Empleado;
+import com.examen.proyecto.service.EmpleadoService;
+
+@RestController
+@RequestMapping("/empleados")
+public class EmpleadoController {
+
+	@Autowired
+	EmpleadoService x;
+	
+	@GetMapping
+	public List<Empleado>ver(){
+		return x.ver();
+	}
+	
+	@PostMapping
+	public Empleado registrar(@RequestBody Empleado empleado) {
+		return x.registrar(empleado);	
+	}
+	
+	@PutMapping
+	public Empleado actulizar(@RequestBody Empleado empleado) {
+		return x.actualizar(empleado);
+	}
+	
+	@DeleteMapping
+	public void eliminar(@RequestBody Empleado empleado) {
+		x.eliminar(empleado);
+	}
+	
+}

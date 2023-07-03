@@ -1,0 +1,5 @@
+package com.examen.proyecto.service;
+
+public class EmpleadoServiceImpl {
+
+}

@@ -1,0 +1,5 @@
+package com.examen.proyecto.entity;
+
+public class Venta {
+
+}

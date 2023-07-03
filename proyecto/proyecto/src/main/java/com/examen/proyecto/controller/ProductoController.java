@@ -1,0 +1,46 @@
+package com.examen.proyecto.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.examen.proyecto.entity.Producto;
+import com.examen.proyecto.service.ProductoService;
+
+@RestController
+@RequestMapping("/productos")
+@CrossOrigin(origins ="http://localhost:4200/")
+public class ProductoController {
+
+	@Autowired
+	ProductoService x;
+	
+	@GetMapping("/producto")
+	public List<Producto>ver(){
+		return x.ver();
+	}
+	
+	@PostMapping("/producto")
+	public Producto registrar(@RequestBody Producto producto) {
+		return x.registrar(producto);	
+	}
+	
+	@PutMapping("/producto")
+	public Producto actulizar(@RequestBody Producto producto) {
+		return x.actualizar(producto);
+	}
+	
+	@DeleteMapping("producto")
+	public void eliminar(@RequestBody Producto producto) {
+		x.elimanar(producto);
+	}
+	
+}
